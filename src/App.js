@@ -3,29 +3,22 @@ import './App.css';
 import PropTypes from "prop-types";
 
 class App extends React.Component{
+
   state = {
-    count: 0
+    isLoading: true,
+    movies: []
   };
 
-  add = () => {
-    this.setState(current => ({count: current.count + 1}));
-  };
-  minus = () => {
-    this.setState(current => ({count: current.count - 1}));
-  };
-
-  render(){
-    return (
-      <div>
-        <h1>Number {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({isLoading: false});
+    }, 5000);
   }
 
-
-
+  render(){
+    const {isLoading} = this.state;
+    return <div>{isLoading ? "Loading" : "We are read"}</div>
+  }
 }
 
 export default App;
